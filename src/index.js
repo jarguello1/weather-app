@@ -6,5 +6,9 @@ let url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${
 async function getWeather() {
     let response = await fetch(url);
     const weatherData = await response.json();
-    console.log(weatherData)
+    console.log(weatherData.coord);
+    console.log(weatherData.main);
+    console.log(weatherData);
 }
+
+getWeather();
