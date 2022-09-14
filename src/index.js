@@ -1,5 +1,8 @@
 const myKey = '0e699be9156d5e418f4bde0cd73827d5';
 let location = 'Miami';
+weatherArray = [];
+
+console.log(location);
 
 let url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${myKey}`
 
@@ -40,9 +43,24 @@ const condition = document.getElementById('condition');
 const feelsLike = document.getElementById('feelsLike');
 const humidity = document.getElementById('humidity');
 
-currentWeather.then(function(result) {
-    temp.textContent = `Temperature :${result.temp} F`;
-    condition.textContent = `Weather: ${result.condition}`;
-    feelsLike.textContent = `Feels Like: ${result.feelsLike} F`;
-    humidity.textContent = `Humidity: ${result.humidity}%`;
+function updateWeather() {
+    currentWeather.then(function(result) {
+        temp.textContent = `Temperature :${result.temp} F`;
+        condition.textContent = `Weather: ${result.condition}`;
+        feelsLike.textContent = `Feels Like: ${result.feelsLike} F`;
+        humidity.textContent = `Humidity: ${result.humidity}%`;
+    })
+}
+
+updateWeather();
+
+const inputBtn = document.getElementById('searchBtn')
+const input = document.getElementById('term')
+
+inputBtn.addEventListener('click', () => {
+    location = input.value;
+    input.value = "";
+    console.log(location);
+    currentWeather = getWeather();
+    updateWeather();
 })
