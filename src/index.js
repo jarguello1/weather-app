@@ -35,13 +35,14 @@ let currentWeather = getWeather();
 
 
 
-
+const locationDisplay = document.getElementById('location');
 const temp = document.getElementById('temp');
 const condition = document.getElementById('condition');
 const feelsLike = document.getElementById('feelsLike');
 const humidity = document.getElementById('humidity');
 
 function updateWeather() {
+    locationDisplay.textContent = location;
     currentWeather.then(function(result) {
         temp.textContent = `Temperature :${result.temp} F`;
         condition.textContent = `Weather: ${result.condition}`;
