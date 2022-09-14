@@ -41,8 +41,8 @@ const feelsLike = document.getElementById('feelsLike');
 const humidity = document.getElementById('humidity');
 
 currentWeather.then(function(result) {
-    temp.textContent = result.temp;
-    condition.textContent = result.condition;
-    feelsLike.textContent = result.feelsLike;
-    humidity.textContent = result.humidity;
+    temp.textContent = `Temperature :${result.temp} F`;
+    condition.textContent = `Weather: ${result.condition}`;
+    feelsLike.textContent = `Feels Like: ${result.feelsLike} F`;
+    humidity.textContent = `Humidity: ${result.humidity}%`;
 })
