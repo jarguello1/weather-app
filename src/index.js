@@ -33,9 +33,7 @@ async function getWeather() {
 
 let currentWeather = getWeather();
 
-currentWeather.then(function(result) {
-    console.log(result);
-})
+
 
 
 const temp = document.getElementById('temp');
@@ -49,6 +47,7 @@ function updateWeather() {
         condition.textContent = `Weather: ${result.condition}`;
         feelsLike.textContent = `Feels Like: ${result.feelsLike} F`;
         humidity.textContent = `Humidity: ${result.humidity}%`;
+        console.log(result);
     })
 }
 
@@ -60,7 +59,7 @@ const input = document.getElementById('term')
 inputBtn.addEventListener('click', () => {
     location = input.value;
     input.value = "";
-    console.log(location);
+    url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${myKey}`
     currentWeather = getWeather();
     updateWeather();
 })
