@@ -3,6 +3,9 @@ body {
     background-color:rgb(0, 0, 19);
 }
 
+.Clouds {
+    background-image: url("./images/clouds-artem-anokhin.jpg");
+}
 
 footer a {
     height: 20px;
