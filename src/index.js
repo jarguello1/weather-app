@@ -1,6 +1,7 @@
+
+
 const myKey = '0e699be9156d5e418f4bde0cd73827d5';
 let location = 'Miami';
-weatherArray = [];
 
 console.log(location);
 
@@ -33,8 +34,6 @@ async function getWeather() {
 
 let currentWeather = getWeather();
 
-
-
 const locationDisplay = document.getElementById('location');
 const temp = document.getElementById('temp');
 const condition = document.getElementById('condition');
@@ -42,10 +41,12 @@ const feelsLike = document.getElementById('feelsLike');
 const humidity = document.getElementById('humidity');
 
 function updateWeather() {
+    main.className = '';
     locationDisplay.textContent = location;
     currentWeather.then(function(result) {
         temp.textContent = `Temperature :${result.temp} F`;
         condition.textContent = `Weather: ${result.condition}`;
+        main.classList.add(`${result.condition}`);
         feelsLike.textContent = `Feels Like: ${result.feelsLike} F`;
         humidity.textContent = `Humidity: ${result.humidity}%`;
         console.log(result);
