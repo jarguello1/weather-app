@@ -1,7 +1,7 @@
 // Info for weather api
 const myKey = '0e699be9156d5e418f4bde0cd73827d5';
 let location = 'Miami';
-let url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${myKey}`
+let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${myKey}`
 
 // object function for weather data
 function Weather(temp = 0, condition = 'clear', code = 800, feelsLike = 0, humidity = 0) {
