@@ -7,9 +7,10 @@ console.log(location);
 
 let url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${myKey}`
 
-function Weather(temp = 0, condition = 'clear', feelsLike = 0, humidity = 0) {
+function Weather(temp = 0, condition = 'clear', code = 800, feelsLike = 0, humidity = 0) {
     this.temp = temp;
     this.condition = condition;
+    this.code = code;
     this.feelsLike = feelsLike;
     this.humidity = humidity;
 
@@ -23,11 +24,12 @@ async function getWeather() {
     const weatherData = await response.json();
     const temp =  (1.8*(weatherData.main.temp-273) + 32).toFixed(1);
     const condition = weatherData.weather[0].main;
+    const code = weatherData.weather[0].id;
     const humidity = weatherData.main.humidity;
     const feelsLike = (1.8*(weatherData.main.feels_like-273) + 32).toFixed(1);
 
 
-    const currentWeather = new Weather(temp, condition, feelsLike, humidity);
+    const currentWeather = new Weather(temp, condition, code, feelsLike, humidity);
 
     return currentWeather;
 }
@@ -43,10 +45,11 @@ const humidity = document.getElementById('humidity');
 function updateWeather() {
     main.className = '';
     locationDisplay.textContent = location;
+    console.log(url);
     currentWeather.then(function(result) {
         temp.textContent = `Temperature :${result.temp} F`;
         condition.textContent = `Weather: ${result.condition}`;
-        main.classList.add(`${result.condition}`);
+        main.classList.add(`wc${result.code}`);
         feelsLike.textContent = `Feels Like: ${result.feelsLike} F`;
         humidity.textContent = `Humidity: ${result.humidity}%`;
         console.log(result);
