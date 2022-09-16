@@ -22,7 +22,7 @@ header {
     font-weight: bold;
 }
 
-body > #main {
+#main {
     height: 100%;
     width: 100%;
     display: flex;
@@ -39,18 +39,14 @@ body > #main {
 
 }
 
-.wc803,.wc802 {
+.wc804, .wc803,.wc802 {
     /*Broken Clouds - 50%-84%*/
     background: url("./images/clouds-artem-anokhin.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .wc801 {
     /*Few Clouds - 11%-25%*/
     background: url("./images/one-cloud-aziz-ayad.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .wc200, .wc201, .wc202, .wc210, .wc211, 
@@ -82,3 +78,19 @@ footer img {
     width: 20px;
 }
 
+.wc600, .wc601, .wc602, .wc611, .wc612, .wc613,
+ .wc615, .wc616, .wc620, .wc621, .wc622 {
+    /*Snow*/
+    background: url("./images/snow-gabriel-alenius.jpg");
+ }
+
+ .wc500, .wc501, .wc502, .wc503, .wc504,
+  .wc511, .wc520, .wc521, .wc522, .wc531 {
+    /* Rain */
+    background: url("./images/rain.jpg");
+  } 
+.wc300, .wc301, .wc302, .wc310, .wc311, 
+.wc312, .wc313, .wc314, .wc321 {
+    /* Drizzle */
+    background: url("./images/drizzle-anant-chandra.jpg");
+}
