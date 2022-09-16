@@ -1,24 +1,18 @@
-
-
+// Info for weather api
 const myKey = '0e699be9156d5e418f4bde0cd73827d5';
 let location = 'Miami';
-
-console.log(location);
-
 let url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${myKey}`
 
+// object function for weather data
 function Weather(temp = 0, condition = 'clear', code = 800, feelsLike = 0, humidity = 0) {
     this.temp = temp;
     this.condition = condition;
     this.code = code;
     this.feelsLike = feelsLike;
     this.humidity = humidity;
-
-    this.getTemp = () => {
-        return this.temp;
-    }
 }
 
+//async function to pull weather data from API
 async function getWeather() {
     let response = await fetch(url);
     const weatherData = await response.json();
@@ -34,8 +28,10 @@ async function getWeather() {
     return currentWeather;
 }
 
+//store data in new object
 let currentWeather = getWeather();
 
+//Add information to divs for display
 const locationDisplay = document.getElementById('location');
 const temp = document.getElementById('temp');
 const condition = document.getElementById('condition');
@@ -45,19 +41,19 @@ const humidity = document.getElementById('humidity');
 function updateWeather() {
     main.className = '';
     locationDisplay.textContent = location;
-    console.log(url);
     currentWeather.then(function(result) {
         temp.textContent = `Temperature :${result.temp} F`;
         condition.textContent = `Weather: ${result.condition}`;
         main.classList.add(`wc${result.code}`);
         feelsLike.textContent = `Feels Like: ${result.feelsLike} F`;
         humidity.textContent = `Humidity: ${result.humidity}%`;
-        console.log(result);
     })
 }
 
+//run intial function
 updateWeather();
 
+// Functions for search bar
 const inputBtn = document.getElementById('searchBtn')
 const input = document.getElementById('term')
 
