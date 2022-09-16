@@ -14,7 +14,7 @@ function Weather(temp = 0, condition = 'clear', code = 800, feelsLike = 0, humid
 
 //async function to pull weather data from API
 async function getWeather() {
-    let response = await fetch(url);
+    let response = await fetch(url, {mode: 'cors'});
     const weatherData = await response.json();
     const temp =  (1.8*(weatherData.main.temp-273) + 32).toFixed(1);
     const condition = weatherData.weather[0].main;
@@ -48,6 +48,7 @@ function updateWeather() {
         feelsLike.textContent = `Feels Like: ${result.feelsLike} F`;
         humidity.textContent = `Humidity: ${result.humidity}%`;
     })
+    console.log(url);
 }
 
 //run intial function
